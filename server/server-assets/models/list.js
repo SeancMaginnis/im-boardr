@@ -1,7 +1,6 @@
 let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
-let schemaName = 'List'
 let Tasks = require('./task')
 
 
@@ -26,4 +25,4 @@ list.pre('remove', function (next) {
 })
 
 
-module.exports = mongoose.model(schemaName, list)
+module.exports = mongoose.model('List', list)

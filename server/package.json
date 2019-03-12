@@ -8,7 +8,7 @@
     "start": "node index.js",
     "dev": "node index.js"
   },
-  "author": "Mark Ohnsman <mark.ohnsman@gmail.com>",
+  "author": "Sean & Dom",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",

@@ -59,24 +59,21 @@ router.put('/:id', (req, res, next) => {
 
 //DELETE
 router.delete('/:id', (req, res, next) => {
-  Lists.deleteOne({ _id: req.params.id, authorId: req.session.uid })
+  Lists.findOne({ _id: req.params.id, authorId: req.session.uid })
     .then(list => {
-      // if (!list.boardId.equals(req.session.uid)) {
-      //   return res.status(401).send("ACCESS DENIED!")
-      // }
-      // list.remove(err => {
-      //   if (err) {
-      //     console.log(err)
-      //     next()
-      //     return
-      //   }
-      res.send("Successfully Deleted")
-    })
-    .catch(err => {
-      res.status(400).send('ACCESS DENIED; Invalid Request')
+      list.remove(err => {
+        if (err) {
+          console.log(err)
+          next()
+          return
+        }
+        res.send("Successfully Deleted")
+      })
+        .catch(err => {
+          res.status(400).send('ACCESS DENIED; Invalid Request')
+        })
     })
 })
-
 
 
 
