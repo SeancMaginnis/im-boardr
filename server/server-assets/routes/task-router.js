@@ -1,9 +1,10 @@
 let router = require('express').Router()
+let Tasks = require('../models/task')
 let Comments = require('../models/comment')
 
 //GET
-router.get('/:taskId', (req, res, next) => {
-  Comments.findById({ taskId: req.params.taskId })
+router.get('/:listId', (req, res, next) => {
+  Tasks.findById({ listId: req.params.listId })
     .then(data => {
       res.send(data)
     })
@@ -13,10 +14,16 @@ router.get('/:taskId', (req, res, next) => {
     })
 })
 
+router.get('/:id/comments', (req, res, next) => {
+  Comments.find({ taskId: req.params.id })
+    .then(comments => res.send(comments))
+    .catch(err => res.status(400).send(err))
+})
+
 //POST
 router.post('/', (req, res, next) => {
   req.body.authorId = req.session.uid
-  Comments.create(req.body)
+  Tasks.create(req.body)
     .then(newTask => {
       res.send(newTask)
     })
@@ -28,12 +35,12 @@ router.post('/', (req, res, next) => {
 
 //PUT
 router.put('/:id', (req, res, next) => {
-  Comments.findById(req.params.id)
-    .then(comment => {
-      if (!comment.listId.equals(req.session.uid)) {
+  Tasks.findById(req.params.id)
+    .then(task => {
+      if (!task.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED!")
       }
-      comment.update(req.body, (err) => {
+      task.update(req.body, (err) => {
         if (err) {
           console.log(err)
           next()
@@ -50,12 +57,12 @@ router.put('/:id', (req, res, next) => {
 
 //DELETE
 router.delete('/:id', (req, res, next) => {
-  Comments.deleteOne({ _id: req.params.id, listId: req.session.uid })
-    .then(comment => {
-      // if (!comment.listId.equals(req.session.uid)) {
+  Tasks.deleteOne({ _id: req.params.id, authorId: req.session.uid })
+    .then(task => {
+      // if (!task.listId.equals(req.session.uid)) {
       //   return res.status(401).send("ACCESS DENIED!")
       // }
-      // comment.remove(err => {
+      // task.remove(err => {
       //   if (err) {
       //     console.log(err)
       //     next()

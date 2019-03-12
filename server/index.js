@@ -42,10 +42,10 @@ server.use((req, res, next) => {
 })
 
 //YOUR ROUTES HERE!!!!!!
-let boardRoutes = require('./server-assets/routes/board')
-let listRoutes = require('./server-assets/routes/list')
-let taskRoutes = require('./server-assets/routes/task')
-let commentRoutes = require('./server-assets/routes/comment')
+let boardRoutes = require('./server-assets/routes/board-router')
+let listRoutes = require('./server-assets/routes/list-router')
+let taskRoutes = require('./server-assets/routes/task-router')
+let commentRoutes = require('./server-assets/routes/comment-router')
 server.use('/api/boards', boardRoutes)
 server.use('/api/boards/:id/lists', listRoutes)
 server.use('/api/boards/:id/lists/:id/tasks', taskRoutes)

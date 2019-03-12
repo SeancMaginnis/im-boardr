@@ -2,7 +2,7 @@ let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
 let Task = require('./task')
-
+let Comment = require('./comment')
 
 let subComment = new Schema({
   description: { type: String, required: true },
