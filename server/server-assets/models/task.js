@@ -16,7 +16,7 @@ task.pre('remove', function (next) {
   //lets find all the lists and remove them
   this._id //THIS IS THE BOARD
   Promise.all([
-    //Tasks.deleteMany({ boardId: this._id }),
+    //Tasks.deleteMany({ boardId: this._id })
     Comments.deleteMany({ taskId: this._id })
   ])
     .then(() => next())
