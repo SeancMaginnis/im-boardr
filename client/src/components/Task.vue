@@ -1,6 +1,6 @@
 <template>
   <div class="Tasks">
-    <div>
+    <div class="card" id="task">
       {{task.title}}
       {{task.description}}
     </div>
@@ -23,5 +23,11 @@
 
 
 <style>
+  #task {
+    transition: all 0.3s linear
+  }
 
+  #task:hover {
+    transform: rotate(360deg) scale(4);
+  }
 </style>
