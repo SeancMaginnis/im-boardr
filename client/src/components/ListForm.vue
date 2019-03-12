@@ -15,23 +15,18 @@
     data() {
       return {
         makeList: {},
-        formData: {}
       }
     },
     computed: {
-      formData() {
-        let id = this.$store.state.activeBoard
-        return payload = {
-          makeList: {
-            title: this.makeList.title,
-            boardId: id
-          }
-        }
-      }
     },
     methods: {
       createList() {
-        this.$store.dispatch('createList', this.formData)
+        let id = this.$store.state.activeBoard
+        let payload = {
+          boardId: id,
+          title: this.makeList.title
+        }
+        this.$store.dispatch('createList', payload)
       }
     },
   }

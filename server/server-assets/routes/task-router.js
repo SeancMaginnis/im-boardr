@@ -3,8 +3,8 @@ let Tasks = require('../models/task')
 let Comments = require('../models/comment')
 
 //GET
-router.get('/:listId', (req, res, next) => {
-  Tasks.findById({ listId: req.params.listId })
+router.get('/', (req, res, next) => {
+  Tasks.find({ boardId: req.params.boardId })
     .then(data => {
       res.send(data)
     })

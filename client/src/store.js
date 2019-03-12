@@ -21,7 +21,10 @@ export default new Vuex.Store({
   state: {
     user: {},
     boards: [],
-    activeBoard: []
+    activeBoard: [],
+    lists: [],
+    tasks: [],
+    comments: []
   },
   mutations: {
     setUser(state, user) {
@@ -32,6 +35,12 @@ export default new Vuex.Store({
     },
     setActive(state, data) {
       state.activeBoard = data
+    },
+    setLists(state, data) {
+      state.lists = data
+    },
+    setTasks(state, data) {
+      state.tasks = data
     }
   },
   actions: {
@@ -89,27 +98,43 @@ export default new Vuex.Store({
           dispatch('getBoards')
         })
     },
+    activeBoard({ commit, dispatch }, payload) {
+      commit('setActive', payload)
+    },
     //#endregion
 
     //#region -- LISTS --
     getLists({ commit, dispatch }, boardId) {
       api.get('boards/' + boardId + '/lists/')
         .then(res => {
-          console.log(res.data)
-          commit('getLists')
+          let payload = {
+            board_id: boardId,
+            lists: res.data
+          }
+          commit('setLists', res.data)
+          dispatch('getTasks', payload)
         })
     },
     createList({ commit, dispatch }, payload) {
-      api.post('/board/' + payload.id + '/lists', payload)
+      api.post('/boards/' + payload.boardId + '/lists', payload)
         .then(res => {
-          console.log(res.data)
+          dispatch('getLists', payload.boardId)
         })
     },
-    activeBoard({ commit, dispatch }, payload) {
-      commit('setActive', payload)
+    deleteList({ commit, dispatch }, payload) {
+      api.delete('/boards/' + payload.boardId + '/lists/' + payload._id)
+        .then(res => {
+          dispatch('getLists', payload.boardId)
+        })
+    },
+    getTasks({ commit, dispatch }, payload) {
+      payload.lists.forEach(list => {
+        api.get('/boards/' + payload.board_id + '/tasks')
+          .then(res => {
+            console.log(res.data)
+            commit('setTasks', res.data)
+          })
+      })
     }
-
-
-    //#endregion
   }
 })

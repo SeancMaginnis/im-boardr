@@ -8,7 +8,7 @@
     <form v-else @submit.prevent="register">
       <input type="text" v-model="newUser.name" placeholder="name">
       <input type="email" v-model="newUser.email" placeholder="email">
-      <input type="password" v-model="newUser.password" placeholder="password">
+      <input type="password" v-model="newUser.password" placeholder="6 Character Minimum">
       <button type="submit">Create Account</button>
     </form>
     <div class="action" @click="loginForm = !loginForm">
