@@ -6,9 +6,10 @@
       <input type="text" placeholder="description" v-model="newBoard.description">
       <button type="submit">Create Board</button>
     </form>
-    <div v-for="board in boards" :key="board._id">
+    <div v-for="board in boards" :key="board._id" :boardId="board._id">
       <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
       <button @click="deleteBoard(board._id)">DELETE BOARD</button>
+      <button @click="logout">LOGOUT</button>
     </div>
   </div>
 </template>
@@ -24,6 +25,8 @@
     },
     mounted() {
       this.$store.dispatch("getBoards");
+      let id = this.$route.params.id
+      this.$store.dispatch('activeBoard', id)
     },
     data() {
       return {
@@ -45,6 +48,9 @@
       },
       deleteBoard(boardId) {
         this.$store.dispatch("deleteBoard", boardId);
+      },
+      logout() {
+        this.$store.dispatch('logout')
       }
     }
   };
