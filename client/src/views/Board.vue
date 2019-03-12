@@ -9,7 +9,9 @@
         </div>
       </div>
       <list-form></list-form>
-      <list></list>
+      <div class="row justify-content-around">
+        <list v-for="list in lists" :list="list"></list>
+      </div>
     </div>
   </div>
 </template>
@@ -30,7 +32,7 @@
         return this.$store.state.boards.find(b => b._id == this.boardId) || { title: 'Loading...' }
       },
       lists() {
-        return this.$store.state.list
+        return this.$store.state.lists
       }
     },
     components: {

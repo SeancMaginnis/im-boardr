@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
 import router from './router'
+import { stat } from 'fs';
 
 Vue.use(Vuex)
 
@@ -23,7 +24,7 @@ export default new Vuex.Store({
     boards: [],
     activeBoard: [],
     lists: [],
-    tasks: [],
+    tasks: {},
     comments: []
   },
   mutations: {
@@ -40,7 +41,7 @@ export default new Vuex.Store({
       state.lists = data
     },
     setTasks(state, data) {
-      state.tasks = data
+      state.tasks[data.listId] = data.tasks
     }
   },
   actions: {
@@ -112,7 +113,6 @@ export default new Vuex.Store({
             lists: res.data
           }
           commit('setLists', res.data)
-          dispatch('getTasks', payload)
         })
     },
     createList({ commit, dispatch }, payload) {
@@ -128,13 +128,14 @@ export default new Vuex.Store({
         })
     },
     getTasks({ commit, dispatch }, payload) {
-      payload.lists.forEach(list => {
-        api.get('/boards/' + payload.board_id + '/tasks')
-          .then(res => {
-            console.log(res.data)
-            commit('setTasks', res.data)
-          })
-      })
+      api.get('/boards/' + payload.boardId + '/lists/' + payload._id + '/tasks')
+        .then(res => {
+          let data = {
+            listId: payload._id,
+            tasks: res.data
+          }
+          commit('setTasks', data)
+        })
     }
   }
 })
