@@ -17,7 +17,7 @@ task.pre('remove', function (next) {
   this._id //THIS IS THE BOARD
   Promise.all([
     //Tasks.deleteMany({ boardId: this._id })
-    Comments.deleteMany({ taskId: this._id })
+    Comments.remove({ taskId: this._id })
   ])
     .then(() => next())
     .catch(err => next(err))
