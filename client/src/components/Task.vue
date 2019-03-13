@@ -3,31 +3,45 @@
     <div class="card" id="task">
       {{task.title}}
       {{task.description}}
+      <button @click="deleteTask" class="btn btn-secondary">Delete Task</button>
     </div>
+    <comment-form :task="task"></comment-form>
+    <comment v-for="comment in comments" :task="task" :comment="comment"></comment>
   </div>
 </template>
 
 <script>
+  import Comment from "@/components/Comment.vue"
+  import CommentForm from '@/components/commentForm.vue'
   export default {
     name: 'Tasks',
-    props: ['task'],
-    data() {
-      return {}
+    props: ['task', 'boardId'],
+    mounted() {
+      this.task.boardId = this.boardId
+      this.$store.dispatch('getComments', this.task)
     },
     computed: {
+      comments() {
+        return this.$store.state.comments[this.task._id]
+      }
     },
-    methods: {},
-    components: {}
+    components: {
+      Comment,
+      CommentForm
+    },
+    methods: {
+      deleteTask() {
+        let payload = {
+          boardId: this.boardId,
+          task: this.task
+        }
+        this.$store.dispatch('deleteTask', payload)
+      }
+    }
   }
 </script>
 
+<style scoped>
 
-<style>
-  #task {
-    transition: all 0.3s linear
-  }
 
-  #task:hover {
-    transform: rotate(360deg) scale(4);
-  }
 </style>

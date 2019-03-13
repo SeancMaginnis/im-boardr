@@ -1,5 +1,5 @@
 <template>
-  <div class="boards">
+  <div class="boards bg1">
     <div><button class="btn btn-outline-danger" @click="logout">LOGOUT</button></div>
     WELCOME TO THE BOARDS!!!
     <form @submit.prevent="addBoard">
@@ -54,8 +54,9 @@
   };
 </script>
 
-<style scoped>
-
-
-
+<style>
+  .bg1 {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, rgb(54, 202, 190), rgb(228, 38, 155))
+  }
 </style>

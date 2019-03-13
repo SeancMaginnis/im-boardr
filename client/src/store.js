@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
 import router from './router'
-import { stat } from 'fs';
 
 Vue.use(Vuex)
 
@@ -25,7 +24,7 @@ export default new Vuex.Store({
     activeBoard: [],
     lists: [],
     tasks: {},
-    comments: []
+    comments: {}
   },
   mutations: {
     setUser(state, user) {
@@ -41,7 +40,10 @@ export default new Vuex.Store({
       state.lists = data
     },
     setTasks(state, data) {
-      state.tasks[data.listId] = data.tasks
+      Vue.set(state.tasks, data.listId, data.tasks)
+    },
+    setComments(state, data) {
+      Vue.set(state.comments, data.taskId, data.comments)
     }
   },
   actions: {
@@ -135,6 +137,77 @@ export default new Vuex.Store({
             tasks: res.data
           }
           commit('setTasks', data)
+        })
+    },
+    createTask({ commit, dispatch }, payload) {
+      api.post('/boards/' + payload.list.boardId + '/lists/' + payload.list._id + '/tasks', payload.content)
+        .then(res => {
+          dispatch('getTasks', payload.list)
+        })
+    },
+    deleteTask({ commit, dispatch }, payload) {
+      api.delete('/boards/' + payload.boardId + '/lists/' + payload.task.listId + '/tasks/' + payload.task._id)
+        .then(res => {
+          let payload1 = {
+            boardId: payload.task.boardId,
+            _id: payload.task.listId
+          }
+          dispatch('getTasks', payload1)
+        })
+    },
+    //#endregion
+
+    //#region -- COMMENTS --
+    getComments({ commit, dispatch }, payload) {
+      api.get('/boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks/' + payload._id + '/comments')
+        .then(res => {
+          let data = {
+            taskId: payload._id,
+            comments: res.data
+          }
+          commit('setComments', data)
+        })
+    },
+    createComment({ commit, dispatch }, payload) {
+      api.post('/boards/' + payload.boardId + '/lists/' + payload.task.listId + '/tasks/' + payload.task._id + '/comments', payload.content)
+        .then(res => {
+          dispatch('getComments', payload.task)
+        })
+    },
+    deleteComment({ commit, dispatch }, payload) {
+      api.delete('/boards/' + payload.boardId + '/lists/' + payload.task.listId + '/tasks/' + payload.task._id + '/comments/' + payload.comment._id)
+        .then(res => {
+          dispatch('getComments', payload.task)
+        })
+    },
+    createSubcomment({ commit, dispatch }, payload) {
+      console.log(payload)
+      api.put('/boards/' + payload.boardId + '/lists/' + payload.task.listId + '/tasks/' + payload.task._id + '/comments/' + payload.comment._id + '/subcomments', payload.content)
+        .then(res => {
+          console.log(res.data)
+          let newPayload = {
+            boardId: payload.boardId,
+            listId: payload.task.listId,
+            _id: payload.task._id,
+          }
+          dispatch('getComments', newPayload)
+        })
+    },
+    deleteSubcomment({ commit, dispatch }, payload) {
+      // let payload = {
+      //   boardId: this.boardId,
+      //   comment: this.comment,
+      //   task: this.task,
+      //   Id: subId
+      // }
+      api.delete('/boards/' + payload.boardId + '/lists/' + payload.task.listId + '/tasks/' + payload.task._id + '/comments/' + payload.comment._id + '/subcomments/' + payload.Id)
+        .then(res => {
+          let newPayload = {
+            boardId: payload.boardId,
+            listId: payload.task.listId,
+            _id: payload.task._id,
+          }
+          dispatch('getComments', newPayload)
         })
     }
   }

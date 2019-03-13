@@ -1,6 +1,6 @@
 <template>
   <div class="board">
-    <div class="container-fluid">
+    <div class="container-fluid bg1">
       <div class="row my-3 justify-content-center">
         <div class="card col-3 d-flex bg-light">
           <b>Board Title:</b> {{board.title}}
