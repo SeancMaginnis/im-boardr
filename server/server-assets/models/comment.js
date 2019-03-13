@@ -13,8 +13,7 @@ let comment = new Schema({
   description: { type: String, required: true },
   authorId: { type: ObjectId, ref: 'User', required: true },
   taskId: { type: ObjectId, ref: 'Task', required: true },
-  listId: { type: ObjectId, ref: 'List', required: true },
-  boardId: { type: ObjectId, ref: 'Board', required: true },
+
   subComments: [subComment]
 }, { timestamps: true })
 
