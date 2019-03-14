@@ -1,19 +1,24 @@
 <template>
-  <div class="col-3 mt-4">
+  <drop class="col-3 mt-4" @dragover="over = true" :class="{ over }" @dragleave="over = false" @drop="handleDrop">
     <div class="rounded card bg-light" id="list-card">
-      <h3 class="p-2"><u>{{list.title}}</u></h3>
+      <h3 class="p-2 card d-flex">{{list.title}}</h3>
       <task-form :list="list"></task-form>
       <task v-for="task in tasks" :task="task" :boardId='list.boardId'></task>
     </div>
     <button class="btn btn-danger w-25 mt-3" @click="deleteList(list)">Delete</button>
-  </div>
+  </drop>
 </template>
 <script>
   import Task from "@/components/Task.vue"
   import TaskForm from "@/components/taskForm.vue"
+  import Drag from '@/components/dragDrop/Drag.vue'
+  import Drop from '@/components/dragDrop/Drop.vue'
   export default {
     name: 'list',
-    props: ['list'],
+    props: ['list', 'task'],
+    data() {
+      return { over: false };
+    },
     mounted() {
       let payload = {
         lists: this.$store.state.lists,
@@ -29,11 +34,23 @@
     methods: {
       deleteList(list) {
         this.$store.dispatch('deleteList', list)
+      },
+      handleDrop(task) {
+        let payload = {
+          list: this.list,
+          oldTask: task,
+          task: {
+            listId: this.list._id
+          }
+        }
+        this.$store.dispatch('editTask', payload)
       }
     },
     components: {
       TaskForm,
-      Task
+      Task,
+      Drag,
+      Drop
     }
   }
 </script>
@@ -47,5 +64,10 @@
     display: flex;
     align-items: flex-end;
     justify-content: center
+  }
+
+  .drop.over {
+    border-color: #aaa;
+    background: #ccc;
   }
 </style>

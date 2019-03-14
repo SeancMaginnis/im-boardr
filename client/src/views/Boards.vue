@@ -1,7 +1,13 @@
 <template>
   <div class="boards bg1">
     <div><button class="btn btn-outline-danger" @click="logout">LOGOUT</button></div>
-    WELCOME TO THE BOARDS!!!
+    <div class="row log">
+      <h1>WELCOME TO THE BOARDS!!!</h1>
+    </div>
+    <div class="col-12 ">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/lLSxinsO6-w" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required>
       <input type="text" placeholder="description" v-model="newBoard.description">
@@ -57,6 +63,14 @@
 <style>
   .bg1 {
     min-height: 100vh;
-    background: linear-gradient(to bottom right, rgb(54, 202, 190), rgb(228, 38, 155))
+    background: linear-gradient(to bottom right, rgb(54, 202, 190), rgb(228, 38, 155));
+    overflow: hidden;
+  }
+
+  .log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
   }
 </style>

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12 mb-5 mt-5">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/rvrZJ5C_Nwg" frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          allow="accelerometer; autoplay; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="col-12 log">
         <div class="login">
@@ -82,7 +82,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Walter Turncoat', cursive;
     text-decoration: none;
   }
 

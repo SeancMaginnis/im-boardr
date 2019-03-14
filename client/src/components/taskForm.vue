@@ -1,9 +1,9 @@
 <template>
   <div class="taskForm">
     <form @submit.prevent="createTask">
-      <input v-model="makeTask.title" type="text" placeholder="Title" />
-      <input v-model="makeTask.description" type="text" placeholder="Description" />
-      <button type="submit">Create Task</button>
+      <input class="shadow" v-model="makeTask.title" type="text" placeholder="Title" />
+      <input class="shadow" v-model="makeTask.description" type="text" placeholder="Description" />
+      <button class="btn btn-primary my-2" type="submit">Create Task</button>
     </form>
   </div>
 </template>

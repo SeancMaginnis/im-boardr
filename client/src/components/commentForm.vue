@@ -1,6 +1,6 @@
 <template>
   <div class="commentForm">
-    <form @submit.prevent="createComment">
+    <form class="my-3" @submit.prevent="createComment">
       <input v-model="makeComment.description" type="text" placeholder="Description" />
       <button type="submit">Create Comment</button>
     </form>

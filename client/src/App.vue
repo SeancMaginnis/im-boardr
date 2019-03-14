@@ -16,7 +16,7 @@
 
 <style>
   #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    font-family: "Walter Turncoat", cursive;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
