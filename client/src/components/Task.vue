@@ -2,7 +2,7 @@
   <div class="Tasks">
     <drag :transfer-data="task" class="card shadow col-10 offset-1 my-1" @mouseover="showButtons = 5"
       @mouseout="showButtons = null" id="task">
-      <h4 class="card-title text-muted">{{task.title}}</h4>
+      <h4 class="card-title">{{task.title}}</h4>
       <p class="card-body">{{task.description}}</p>
       <form>
         <button class="btn btn-delete col-3 mb-2" @click="deleteTask">Delete</button>

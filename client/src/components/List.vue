@@ -1,7 +1,7 @@
 <template>
-  <drop class="col-3 mt-4" @dragover="over = true" :class="{ over }" @dragleave="over = false" @drop="handleDrop">
-    <div class="rounded card bg-light" id="list-card">
-      <h3 class="p-2 card d-flex">{{list.title}}</h3>
+  <drop class="col-3 mt-4" @drop="handleDrop">
+    <div class="rounded card" id="list-card">
+      <h3 class="p-2 d-flex text-white">{{list.title}}</h3>
       <task-form :list="list"></task-form>
       <task v-for="task in tasks" :task="task" :boardId='list.boardId'></task>
     </div>
@@ -57,6 +57,7 @@
 
 <style scoped>
   #list-card {
+    background-color: transparent;
     min-height: 60vh;
   }
 
@@ -66,8 +67,10 @@
     justify-content: center
   }
 
-  .drop.over {
-    border-color: #aaa;
-    background: #ccc;
+
+  #list-card {
+    border-image: url('../assets/backgrounds/05.png') 50;
+    border-image-slice: 40%;
+    border-width: 10px;
   }
 </style>

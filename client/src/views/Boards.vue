@@ -1,13 +1,10 @@
 <template>
   <div class="boards bg1">
-    <div><button class="btn btn-outline-danger" @click="logout">LOGOUT</button></div>
+    <navbar></navbar>
     <div class="row log">
       <h1>WELCOME TO THE BOARDS!!!</h1>
     </div>
-    <div class="col-12 ">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/lLSxinsO6-w" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required>
       <input type="text" placeholder="description" v-model="newBoard.description">
@@ -21,6 +18,7 @@
 </template>
 
 <script>
+  import Navbar from '@/components/NavBar.vue'
   export default {
     name: "boards",
     created() {
@@ -56,6 +54,9 @@
       logout() {
         this.$store.dispatch('logout')
       }
+    },
+    components: {
+      Navbar
     }
   };
 </script>
@@ -63,8 +64,12 @@
 <style>
   .bg1 {
     min-height: 100vh;
-    background: linear-gradient(to bottom right, rgb(54, 202, 190), rgb(228, 38, 155));
+    background-image: url('../assets/backgrounds/black-chalkboard.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     overflow: hidden;
+    min-width: 100vw;
+    height: auto;
   }
 
   .log {
@@ -72,5 +77,6 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    color: white
   }
 </style>

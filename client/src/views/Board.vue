@@ -1,11 +1,17 @@
 <template>
   <div class="board">
     <div class="container-fluid bg1">
+      <navbar></navbar>
       <div class="row my-3 justify-content-center">
-        <div class="card col-3 d-flex bg-light">
-          <b>Board Title:</b> {{board.title}}
+        <div class="col-4 offset-1 d-flex text-white">
+          <h3><b>Title:</b> {{board.title}}</h3>
+        </div>
+      </div>
+      <img style="height: 18px; width: auto;" src="../assets/backgrounds/05.png" />
+      <div class="row my-3 justify-content-center">
+        <div class="col-4 offset-1 d-flex text-white">
+          <h3><b>Description:</b> {{board.description}}</h3>
           <br>
-          <b>Board Description:</b> {{board.description}}
         </div>
       </div>
       <list-form></list-form>
@@ -14,9 +20,11 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
+  import Navbar from "@/components/NavBar.vue"
   import ListForm from "@/components/ListForm.vue"
   import List from '@/components/List.vue'
   export default {
@@ -37,7 +45,8 @@
     },
     components: {
       ListForm,
-      List
+      List,
+      Navbar
     },
     props: ["boardId"]
   };
