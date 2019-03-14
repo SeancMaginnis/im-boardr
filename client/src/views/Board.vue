@@ -7,7 +7,7 @@
           <h3><b>Title:</b> {{board.title}}</h3>
         </div>
       </div>
-      <img style="height: 18px; width: auto;" src="../assets/backgrounds/05.png" />
+      <img style="height: 18px; width: auto;" src="../assets/backgrounds/horizontal.png" />
       <div class="row my-3 justify-content-center">
         <div class="col-4 offset-1 d-flex text-white">
           <h3><b>Description:</b> {{board.description}}</h3>
@@ -22,6 +22,7 @@
   </div>
   </div>
 </template>
+
 
 <script>
   import Navbar from "@/components/NavBar.vue"

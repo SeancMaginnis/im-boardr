@@ -3,6 +3,7 @@
     <navbar></navbar>
     <div class="row log">
       <h1>WELCOME TO THE BOARDS!!!</h1>
+
     </div>
 
     <form @submit.prevent="addBoard">
@@ -10,8 +11,9 @@
       <input type="text" placeholder="description" v-model="newBoard.description">
       <button class="btn btn-outline-success" type="submit">Create Board</button>
     </form>
-    <div v-for="board in boards" :key="board._id" :boardId="board._id">
-      <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
+    <div class="row d-flex justify-content-center my-5" v-for="board in boards" :key="board._id" :boardId="board._id">
+      <div class="card-horizontal col-4 text-white" :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}
+      </div>
       <button class="btn btn-outline-dark" @click="deleteBoard(board._id)">DELETE BOARD</button>
     </div>
   </div>
@@ -78,5 +80,15 @@
     align-items: center;
     text-decoration: none;
     color: white
+  }
+
+  .card-horizontal {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 10px solid;
+    border-right: 10px solid;
+    border-left: 10px solid;
+    border-bottom: 15px solid;
+    border-image-slice: 3%;
   }
 </style>

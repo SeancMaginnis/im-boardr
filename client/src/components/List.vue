@@ -1,6 +1,6 @@
 <template>
   <drop class="col-3 mt-4" @drop="handleDrop">
-    <div class="rounded card" id="list-card">
+    <div class="rounded card-horizontal card-vertical justify-content-center">
       <h3 class="p-2 d-flex text-white">{{list.title}}</h3>
       <task-form :list="list"></task-form>
       <task v-for="task in tasks" :task="task" :boardId='list.boardId'></task>
@@ -67,10 +67,13 @@
     justify-content: center
   }
 
-
-  #list-card {
-    border-image: url('../assets/backgrounds/05.png') 50;
-    border-image-slice: 40%;
-    border-width: 10px;
+  .card-horizontal {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 10px solid;
+    border-right: 10px solid;
+    border-left: 10px solid;
+    border-bottom: 15px solid;
+    border-image-slice: 3%;
   }
 </style>

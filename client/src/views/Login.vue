@@ -1,6 +1,12 @@
 <template>
   <div class="container-fluid bg">
     <div class="row">
+      <div class="col-12 wel">
+        <h1>Welcome to Chalkboard!</h1>
+        <hr class="better">
+      </div>
+    </div>
+    <div class="row">
       <div class="col-12 mb-5 mt-5">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/rvrZJ5C_Nwg" frameborder="0"
           allow="accelerometer; autoplay; picture-in-picture" allowfullscreen></iframe>
@@ -15,7 +21,7 @@
             </div>
           </form>
           <form v-else @submit.prevent="register">
-            <div style="font-size:1.25em">
+            <div class="fix" style="font-size:1.25em">
               <input type="text" v-model="newUser.name" placeholder="name" required>
               <input type="email" v-model="newUser.email" placeholder="email" required>
               <input type="password" v-model="newUser.password" placeholder="6 Character Minimum" required>
@@ -74,7 +80,7 @@
 
   .bg {
     min-height: 100vh;
-    background: linear-gradient(to bottom right, #024, #402);
+    background-image: url('../assets/backgrounds/black-chalkboard.jpg');
 
   }
 
@@ -86,7 +92,9 @@
     text-decoration: none;
   }
 
-
+  .wel {
+    color: white;
+  }
 
   .btn1 {
 
@@ -109,4 +117,12 @@
     color: white;
     border-color: white;
   }
+
+  .better {
+    background-image: url('../assets/backgrounds/horizontal.png');
+    height: 10px;
+    width: 35em;
+  }
+
+  .fix {}
 </style>

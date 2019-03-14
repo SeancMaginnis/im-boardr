@@ -9,10 +9,7 @@
     <div>
       <button class="btn btn-danger" @click="deleteComment">Delete Comment</button>
     </div>
-
-    <!-- <button class="btn btn-secondary">get Comments</button>
-      -->
-
+    <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
   </div>
   </div>
 </template>
