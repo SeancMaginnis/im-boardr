@@ -1,7 +1,11 @@
 <template>
   <div class="container-fluid bg">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 mb-5 mt-5">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/rvrZJ5C_Nwg" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="col-12 log">
         <div class="login">
           <form v-if="loginForm" @submit.prevent="loginUser">
             <div style="font-size:1.5em">
@@ -11,10 +15,12 @@
             </div>
           </form>
           <form v-else @submit.prevent="register">
-            <input type="text" v-model="newUser.name" placeholder="name" required>
-            <input type="email" v-model="newUser.email" placeholder="email" required>
-            <input type="password" v-model="newUser.password" placeholder="6 Character Minimum" required>
-            <button class="btn1" style="background-color:rgb(67, 110, 160)" type="submit">Create Account</button>
+            <div style="font-size:1.25em">
+              <input type="text" v-model="newUser.name" placeholder="name" required>
+              <input type="email" v-model="newUser.email" placeholder="email" required>
+              <input type="password" v-model="newUser.password" placeholder="6 Character Minimum" required>
+              <button class="btn1" style="background-color:rgb(67, 110, 160)" type="submit">Create Account</button>
+            </div>
           </form>
           <div class="action" @click="loginForm = !loginForm">
             <p v-if="loginForm">No account? Click here to Register</p>
@@ -52,6 +58,7 @@
       loginUser() {
         this.$store.dispatch("login", this.creds);
       }
+
     }
   };
 </script>
@@ -64,9 +71,14 @@
     font-weight: 300
   }
 
+
   .bg {
     min-height: 100vh;
     background: linear-gradient(to bottom right, #024, #402);
+
+  }
+
+  .log {
     display: flex;
     justify-content: center;
     align-items: center;
