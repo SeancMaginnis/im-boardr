@@ -1,8 +1,8 @@
 <template>
   <div class="SubcommentForm">
     <form @submit.prevent="createSubcomment">
-      <input v-model="makeSubcomment.description" type="text" placeholder="Description" />
-      <button type="submit">Reply to comment</button>
+      <input class="rounded p-1" v-model="makeSubcomment.description" type="text" placeholder="Description" />
+      <button class="chalk-border2 mx-2" type="submit">Reply to comment</button>
     </form>
   </div>
 </template>
@@ -38,4 +38,16 @@
 
 
 <style>
+  .chalk-border2 {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 4px solid;
+    border-right: 4px solid;
+    border-left: 4px solid;
+    border-bottom: 4px solid;
+    border-image-slice: 3%;
+    cursor: pointer;
+    color: white;
+    border-radius: 5%;
+  }
 </style>

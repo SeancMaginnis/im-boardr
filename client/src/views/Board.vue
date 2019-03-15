@@ -7,6 +7,9 @@
           <h1>{{board.title}}</h1>
           <h3>{{board.description}}</h3>
         </div>
+        <div>
+          <h3 class="text-white">Instructions:</h3>
+        </div>
       </div>
       <div class="row justify-content-center">
         <list-form></list-form>

@@ -1,7 +1,8 @@
 <template>
-  <drop class="col-3 mt-4" @drop="handleDrop">
-    <div class="rounded card-horizontal card-vertical justify-content-center">
-      <h3 class="p-2 d-flex text-white">{{list.title}}</h3>
+  <drop class="col-3 mt-4" @drop="handleDrop" id="cursor">
+    <div class="rounded card-horizontal1 card-vertical justify-content-center">
+      <h3 class="p-2 text-white ">{{list.title}}</h3>
+      <img class="ml-2 mb-4" style=" height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
       <task-form :list="list"></task-form>
       <task v-for="task in tasks" :task="task" :boardId='list.boardId'></task>
     </div>
@@ -11,8 +12,6 @@
 <script>
   import Task from "@/components/Task.vue"
   import TaskForm from "@/components/taskForm.vue"
-  import Drag from '@/components/dragDrop/Drag.vue'
-  import Drop from '@/components/dragDrop/Drop.vue'
   export default {
     name: 'list',
     props: ['list', 'task'],
@@ -49,13 +48,16 @@
     components: {
       TaskForm,
       Task,
-      Drag,
-      Drop
+
     }
   }
 </script>
 
 <style scoped>
+  #cursor {
+    cursor: default;
+  }
+
   #list-card {
     background-color: transparent;
     min-height: 60vh;
@@ -67,7 +69,7 @@
     justify-content: center
   }
 
-  .card-horizontal {
+  .card-horizontal1 {
     border-image: url('../assets/backgrounds/border.png');
     background-color: transparent;
     border-top: 10px solid;

@@ -3,11 +3,12 @@
     <div class="row ml-5">
       <ul class="nav nav-pills">
         <li>
-          <div class="mx-1 p-3 text-white chalk-border" :hidden="this.$route.path == '/'" @click="setBoards">Home</div>
+          <div class="mx-1 p-3 chalk-border" :hidden="this.$route.path == '/'" @click="setBoards" id="chalkFill">
+            Home</div>
         </li>
         <li class="dropdown">
-          <div class="mx-1 p-3 text-white chalk-border dropdown-toggle mx-1" data-toggle="dropdown" href="#"
-            role="button" aria-haspopup="true" aria-expanded="false">Dropdown</div>
+          <div class="mx-1 p-3 chalk-border dropdown-toggle mx-1" data-toggle="dropdown" href="#" role="button"
+            aria-haspopup="true" aria-expanded="false" id="chalkFill">Dropdown</div>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
@@ -17,7 +18,7 @@
           </div>
         </li>
         <li>
-          <div class="mx-1 p-3 text-white chalk-border mx-1" @click="logout">LOGOUT</div>
+          <div class="mx-1 p-3 chalk-border mx-1" @click="logout" id="chalkFill">LOGOUT</div>
         </li>
       </ul>
     </div>
@@ -63,5 +64,18 @@
     border-bottom: 4px solid;
     border-image-slice: 3%;
     cursor: pointer;
+  }
+
+  #chalkFill {
+    background-color: transparent;
+    transition: all 0.4s lineear;
+    color: white;
+    border-radius: 5%;
+  }
+
+  #chalkFill:hover {
+    /* background-image: url('../assets/backgrounds/chalkFill.png'); */
+    background-color: white;
+    color: black;
   }
 </style>

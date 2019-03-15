@@ -6,14 +6,16 @@
       </h1>
     </div>
     <form class="mt-4" @submit.prevent="addBoard">
-      <input type="text" placeholder="title" v-model="newBoard.title" required>
-      <input type="text" placeholder="description" v-model="newBoard.description">
-      <button class="btn btn-outline-success" type="submit">Create Board</button>
+      <input class="mx-2 p-3 px-5 rounded" type="text" placeholder="title" v-model="newBoard.title" required>
+      <input class="mx-2 p-3 px-5 rounded" type="text" placeholder="description" v-model="newBoard.description">
+      <button class="point chalk-border1 text-white ml-2 p-3" type="submit">Create Board</button>
     </form>
-    <div class="row d-flex justify-content-center my-5" v-for="board in boards" :key="board._id" :boardId="board._id">
-      <h1 class="card-horizontal col-2 text-white" @click="boardDetails(board._id)">{{board.title}}
-      </h1>
-      <button class="btn btn-outline-dark" @click="deleteBoard(board._id)">DELETE BOARD</button>
+    <div class="row jc">
+      <div class=" col-4 mt-2" v-for="board in boards" :key="board._id" :boardId="board._id">
+        <h1 class="card-horizontal curs2 box text-white" @click="boardDetails(board._id)">{{board.title}}
+        </h1>
+        <button id="curs" class="point btn-outline-dark" @click="deleteBoard(board._id)">DELETE BOARD</button>
+      </div>
     </div>
   </div>
 </template>
@@ -93,10 +95,13 @@
     border-left: 5px solid;
     border-bottom: 15px solid;
     border-image-slice: 3%;
-    cursor: crosshair
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center
   }
 
-  .btn {
+  .point {
     cursor: pointer;
   }
 
@@ -105,5 +110,25 @@
     background-color: transparent;
     border-bottom: 15px solid;
     border-image-slice: 3%;
+  }
+
+  .chalk-border1 {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 4px solid;
+    border-right: 4px solid;
+    border-left: 4px solid;
+    border-bottom: 4px solid;
+    border-image-slice: 3%;
+    cursor: pointer;
+  }
+
+  #curs {
+    cursor: url('../assets/backgrounds/eraser2.png'), pointer
+  }
+
+  .box {
+    min-width: 5em;
+    min-height: 5em
   }
 </style>

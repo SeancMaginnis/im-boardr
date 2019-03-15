@@ -1,16 +1,14 @@
 <template>
   <div class="Tasks">
-    <drag :transfer-data="task" class="text-white shadow col-10 offset-1 my-1" @mouseover="showButtons = 5"
-      @mouseout="showButtons = null" id="task">
+    <drag :transfer-data="task" class="text-white shadow col-10 offset-1 my-1 point" id="task">
       <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
-      <h4 class="card-title">{{task.title}}: {{task.description}}</h4>
-      <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
-      <form>
-        <button class="btn btn-delete col-3 mb-2" @click="deleteTask">Delete</button>
-        <comment-form :task="task"></comment-form>
-      </form>
-
+      <div @click="taskClick = !taskClick">
+        <h4 class="card-title">{{task.title}}: {{task.description}}</h4><span class="chalk-border1 col-3 mb-2"
+          @click="deleteTask">Delete</span>
+        <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
+      </div>
     </drag>
+    <comment-form v-if="taskClick" :task="task"></comment-form>
     <comment v-for="comment in comments" :task="task" :comment="comment"></comment>
   </div>
 </template>
@@ -18,12 +16,14 @@
 <script>
   import Comment from "@/components/Comment.vue"
   import CommentForm from '@/components/commentForm.vue'
-  import Drag from '@/components/dragDrop/Drag.vue'
-  import Drop from '@/components/dragDrop/Drop.vue'
   export default {
     name: 'Tasks',
     props: ['task', 'boardId'],
-
+    data() {
+      return {
+        taskClick: null
+      }
+    },
     mounted() {
       this.task.boardId = this.boardId
       this.$store.dispatch('getComments', this.task)
@@ -36,8 +36,7 @@
     components: {
       Comment,
       CommentForm,
-      Drag,
-      Drop
+
     },
     methods: {
       deleteTask() {
@@ -65,5 +64,18 @@
   .drop.over {
     border-color: #aaa;
     background: #ccc;
+  }
+
+  .chalk-border1 {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 4px solid;
+    border-right: 4px solid;
+    border-left: 4px solid;
+    border-bottom: 4px solid;
+    border-image-slice: 3%;
+    cursor: pointer;
+    color: white;
+    border-radius: 5%;
   }
 </style>

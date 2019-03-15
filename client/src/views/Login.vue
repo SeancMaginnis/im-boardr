@@ -1,23 +1,25 @@
 <template>
-  <div class="container-fluid bg">
+  <div class="container-fluid bg zIndex">
+    <div class="overlay"></div>
+    <video loop muted autoplay id="loginVideo">
+      <source src="../assets/backgrounds/loginVideo.mp4" type="video/mp4">
+    </video>
     <div class="row">
-      <div class="col-12 wel">
+      <div class="col-12 wel zIndex mt-5">
         <h1>Welcome to Chalkboard!</h1>
         <hr class="better">
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 mb-5 mt-5">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/rvrZJ5C_Nwg" frameborder="0"
-          allow="accelerometer; autoplay; picture-in-picture" allowfullscreen></iframe>
+    <div class="row mt-5">
+      <div class="col-12 mb-5 mt-5 zIndex">
       </div>
-      <div class="col-12 log">
+      <div class="col-12 mt-5 log zIndex">
         <div class="login">
           <form v-if="loginForm" @submit.prevent="loginUser">
-            <div style="font-size:1.5em">
-              <input type="email" v-model="creds.email" placeholder="email">
-              <input type="password" v-model="creds.password" placeholder="password">
-              <button type="submit" class="action btn1" style="background-color:rgb(67, 110, 160)">Login</button>
+            <div class="zIndex" style="font-size:1.5em">
+              <input class="mx-3" type="email" v-model="creds.email" placeholder="email">
+              <input class="mx-3" type="password" v-model="creds.password" placeholder="password">
+              <button type="submit" class="action btn1 zIndex" style="background-color:rgb(67, 110, 160)">Login</button>
             </div>
           </form>
           <form v-else @submit.prevent="register">
@@ -29,7 +31,7 @@
             </div>
           </form>
           <div class="action" @click="loginForm = !loginForm">
-            <p v-if="loginForm">No account? Click here to Register</p>
+            <p class="mt-2" v-if=" loginForm">No account? Click here to Register</p>
             <p v-else>Already have an account? Click here to Login</p>
           </div>
         </div>
@@ -77,13 +79,6 @@
     font-weight: 300
   }
 
-
-  .bg {
-    min-height: 100vh;
-    background-image: url('../assets/backgrounds/black-chalkboard.jpg');
-
-  }
-
   .log {
     display: flex;
     justify-content: center;
@@ -127,5 +122,31 @@
   .fix {
     min-width: 100px;
     font-size: 1.5em
+  }
+
+  #loginVideo {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-position: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    z-index: 0;
+
+  }
+
+  .overlay {
+    position: absolute;
+    background: rgba(38, 38, 38, 0.523);
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  .zIndex {
+    z-index: 10;
   }
 </style>

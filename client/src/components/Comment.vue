@@ -1,16 +1,21 @@
 <template>
-  <div class="Comments">
-    <subcomment-form :comment="comment" :task="task"></subcomment-form>
-    {{comment.description}}
-    <div v-for="subcomment in comment.subComments">
-      <div>{{subcomment.description}}</div>
-      <button class="btn btn-info" @click="deleteSubcomment(subcomment._id)">delete SUBCOMMENTS</button>
+  <div>
+    <ol>
+      <li class="Comments text-white text-left offset-3" id="commentHover"
+        @click="isClicked = !isClicked, subClicked = null">
+        {{comment.description}}
+      </li>
+    </ol>
+    <div v-if="isClicked">
+      <button class="chalk-border1 mb-2" @click="deleteComment">Delete Comment</button>
+      <subcomment-form :comment="comment" :task="task"></subcomment-form>
     </div>
-    <div>
-      <button class="btn btn-danger" @click="deleteComment">Delete Comment</button>
-    </div>
-    <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
-  </div>
+    <ul v-for="subcomment in comment.subComments">
+      <li class="text-white text-left offset-4" @click="subClicked = !subClicked, isClicked = null">
+        {{subcomment.description}}</li>
+      <button v-if="subClicked" class="chalk-border1" @click="deleteSubcomment(subcomment._id)">Delete</button>
+    </ul>
+
   </div>
 </template>
 
@@ -20,7 +25,10 @@
     name: 'Comments',
     props: ['comment', 'task', 'boardId'],
     data() {
-      return {}
+      return {
+        isClicked: null,
+        subClicked: null
+      }
     },
     computed: {
     },
@@ -50,5 +58,26 @@
 </script>
 
 
-<style>
+<style scoped>
+  #comment {
+    transition: all 0.3s linear;
+  }
+
+  #comment:hover {
+    transform: scale(1.1);
+    font-weight: bold
+  }
+
+  .chalk-border1 {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 4px solid;
+    border-right: 4px solid;
+    border-left: 4px solid;
+    border-bottom: 4px solid;
+    border-image-slice: 3%;
+    cursor: pointer;
+    color: white;
+    border-radius: 5%;
+  }
 </style>
