@@ -7,7 +7,7 @@
         </li>
         <li class="dropdown">
           <button class="btn btn-outline-light dropdown-toggle mx-1" data-toggle="dropdown" href="#" role="button"
-            aria-haspopup="true" aria-expanded="false">Dropdown</button>
+            aria-haspopup="true" aria-expanded="false">Coming Soon</button>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>

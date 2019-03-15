@@ -2,17 +2,18 @@
   <div class="boards bg1">
     <navbar></navbar>
     <div class="row log">
-      <h1>WELCOME TO THE BOARDS!!!</h1>
+      <h1>Welcome to your ChalkBoard</h1>
 
     </div>
 
     <form @submit.prevent="addBoard">
-      <input type="text" placeholder="title" v-model="newBoard.title" required>
-      <input type="text" placeholder="description" v-model="newBoard.description">
-      <button class="btn btn-outline-success" type="submit">Create Board</button>
+      <input class="mx-2" type="text" placeholder="title" v-model="newBoard.title" required>
+      <input class="mx-2" type="text" placeholder="description" v-model="newBoard.description">
+      <button class="btn btn-outline-success mx-2" type="submit">Create Board</button>
     </form>
     <div class="row d-flex justify-content-center my-5" v-for="board in boards" :key="board._id" :boardId="board._id">
-      <div class="card-horizontal col-4 text-white" :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}
+      <div class="card-horizontal col-4 text-white" @click="detailsPage(board._id)">
+        <h1>{{board.title}}</h1>
       </div>
       <button class="btn btn-outline-dark" @click="deleteBoard(board._id)">DELETE BOARD</button>
     </div>
@@ -55,12 +56,15 @@
       },
       logout() {
         this.$store.dispatch('logout')
+      },
+      detailsPage(boardId) {
+        this.$router.push('/board/' + boardId)
       }
     },
     components: {
       Navbar
     }
-  };
+  }
 </script>
 
 <style>
@@ -72,6 +76,7 @@
     overflow: hidden;
     min-width: 100vw;
     height: auto;
+
   }
 
   .log {
@@ -86,9 +91,14 @@
     border-image: url('../assets/backgrounds/border.png');
     background-color: transparent;
     border-top: 10px solid;
-    border-right: 10px solid;
-    border-left: 10px solid;
+    border-right: 5px solid;
+    border-left: 5px solid;
     border-bottom: 15px solid;
     border-image-slice: 3%;
+    cursor: crosshair
+  }
+
+  .btn {
+    cursor: pointer;
   }
 </style>
