@@ -6,6 +6,17 @@
       <button class="btn btn-delete col-4 offset-4 mb-2" @click="deleteTask">Delete</button>
     </div>
     <comment-form :task="task"></comment-form>
+    <drag :transfer-data="task" class="text-white shadow col-10 offset-1 my-1" @mouseover="showButtons = 5"
+      @mouseout="showButtons = null" id="task">
+      <h4 class="card-title">{{task.title}}: {{task.description}}</h4>
+
+      <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
+      <form>
+        <button class="btn btn-delete col-3 mb-2" @click="deleteTask">Delete</button>
+        <comment-form :task="task"></comment-form>
+      </form>
+
+    </drag>
     <comment v-for="comment in comments" :task="task" :comment="comment"></comment>
   </div>
 </template>
@@ -13,9 +24,12 @@
 <script>
   import Comment from "@/components/Comment.vue"
   import CommentForm from '@/components/commentForm.vue'
+  import Drag from '@/components/dragDrop/Drag.vue'
+  import Drop from '@/components/dragDrop/Drop.vue'
   export default {
     name: 'Tasks',
     props: ['task', 'boardId'],
+
     mounted() {
       this.task.boardId = this.boardId
       this.$store.dispatch('getComments', this.task)
@@ -27,7 +41,9 @@
     },
     components: {
       Comment,
-      CommentForm
+      CommentForm,
+      Drag,
+      Drop
     },
     methods: {
       deleteTask() {
@@ -46,4 +62,16 @@
     background-color: rgb(249, 60, 60);
     color: white;
   }
+
+  <<<<<<< HEAD=======.hover {
+    transition-delay: 1s;
+    transition: all 0.5s linear;
+  }
+
+  .drop.over {
+    border-color: #aaa;
+    background: #ccc;
+  }
+
+  >>>>>>>1e5daad7842bb8a0d5527c1c5b982b48e833d7e8
 </style>

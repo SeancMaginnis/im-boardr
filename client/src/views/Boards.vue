@@ -1,20 +1,26 @@
 <template>
   <div class="boards bg1">
-    <div><button class="btn btn-outline-danger" @click="logout">LOGOUT</button></div>
-    WELCOME TO THE BOARDS!!!
+    <navbar></navbar>
+    <div class="row log">
+      <h1>WELCOME TO THE BOARDS!!!</h1>
+
+    </div>
+
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required>
       <input type="text" placeholder="description" v-model="newBoard.description">
       <button class="btn btn-outline-success" type="submit">Create Board</button>
     </form>
-    <div v-for="board in boards" :key="board._id" :boardId="board._id">
-      <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
+    <div class="row d-flex justify-content-center my-5" v-for="board in boards" :key="board._id" :boardId="board._id">
+      <div class="card-horizontal col-4 text-white" :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}
+      </div>
       <button class="btn btn-outline-dark" @click="deleteBoard(board._id)">DELETE BOARD</button>
     </div>
   </div>
 </template>
 
 <script>
+  import Navbar from '@/components/NavBar.vue'
   export default {
     name: "boards",
     created() {
@@ -50,6 +56,9 @@
       logout() {
         this.$store.dispatch('logout')
       }
+    },
+    components: {
+      Navbar
     }
   };
 </script>
@@ -57,6 +66,29 @@
 <style>
   .bg1 {
     min-height: 100vh;
-    background: linear-gradient(to bottom right, rgb(54, 202, 190), rgb(228, 38, 155))
+    background-image: url('../assets/backgrounds/black-chalkboard.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    min-width: 100vw;
+    height: auto;
+  }
+
+  .log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white
+  }
+
+  .card-horizontal {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 10px solid;
+    border-right: 10px solid;
+    border-left: 10px solid;
+    border-bottom: 15px solid;
+    border-image-slice: 3%;
   }
 </style>

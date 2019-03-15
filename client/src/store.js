@@ -2,7 +2,10 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
 import router from './router'
+import { Drag, Drop } from 'vue-drag-drop';
 
+Vue.component('drag', Drag);
+Vue.component('drop', Drop);
 Vue.use(Vuex)
 
 let auth = Axios.create({
@@ -123,6 +126,17 @@ export default new Vuex.Store({
           dispatch('getLists', payload.boardId)
         })
     },
+    editList({ commit, dispatch }, payload) {
+      api.put('/boards/' + payload.boardId + '/lists/' + payload.list.listId, payload.content)
+        .then(res => {
+          console.log(res.data)
+          let newPayload = {
+            boardId: payload.boardId,
+            _id: payload.list._id,
+          }
+          dispatch('getLists', newPayload)
+        })
+    },
     deleteList({ commit, dispatch }, payload) {
       api.delete('/boards/' + payload.boardId + '/lists/' + payload._id)
         .then(res => {
@@ -154,6 +168,22 @@ export default new Vuex.Store({
           }
           dispatch('getTasks', payload1)
         })
+    },
+    editTask({ commit, dispatch }, payload) {
+      api.put('/boards/' + payload.list.boardId + '/lists/' + payload.oldTask.listId + '/tasks/' + payload.oldTask._id, payload.task)
+        .then(res => {
+          let newPayload = {
+            boardId: payload.list.boardId,
+            _id: payload.oldTask.listId
+          }
+          let oldPayload = {
+            boardId: payload.list.boardId,
+            _id: payload.task.listId
+          }
+          dispatch('getTasks', newPayload)
+          dispatch('getTasks', oldPayload)
+        })
+
     },
     //#endregion
 
@@ -210,5 +240,6 @@ export default new Vuex.Store({
           dispatch('getComments', newPayload)
         })
     }
+
   }
 })
