@@ -1,9 +1,9 @@
 <template>
   <div class="Tasks">
-    <div class="card" id="task">
-      {{task.title}}
-      {{task.description}}
-      <button @click="deleteTask" class="btn btn-secondary">Delete Task</button>
+    <div class="card d-flex justify-content-center" id="task">
+      <h4 class="card-title">{{task.title}}</h4>
+      <p class="card-body">{{task.description}}</p>
+      <button class="btn btn-delete col-4 offset-4 mb-2" @click="deleteTask">Delete</button>
     </div>
     <comment-form :task="task"></comment-form>
     <comment v-for="comment in comments" :task="task" :comment="comment"></comment>
@@ -42,6 +42,8 @@
 </script>
 
 <style scoped>
-
-
+  .btn-delete {
+    background-color: rgb(249, 60, 60);
+    color: white;
+  }
 </style>
