@@ -10,7 +10,6 @@
         <hr class="better">
       </div>
     </div>
-<<<<<<< HEAD
     <div class="row mt-5">
       <div class="col-12 mb-5 mt-5 zIndex">
       </div>
@@ -34,33 +33,15 @@
           <div class="action" @click="loginForm = !loginForm">
             <p class="mt-2" v-if=" loginForm">No account? Click here to Register</p>
             <p v-else>Already have an account? Click here to Login</p>
-=======
-    <div class="col-12 log">
-      <div class="login">
-        <form v-if="loginForm" @submit.prevent="loginUser">
-          <div style="font-size:1.5em">
-            <input type="email" v-model="creds.email" placeholder="email">
-            <input type="password" v-model="creds.password" placeholder="password">
-            <button type="submit" class="action btn1">Login</button>
           </div>
-        </form>
-        <form v-else @submit.prevent="register">
-          <div class="fix">
-            <input type="text" v-model="newUser.name" placeholder="User Name" required>
-            <input type="email" v-model="newUser.email" placeholder="email" required>
-            <input type="password" v-model="newUser.password" placeholder="Password" required>
-            <button class="btn1" type="submit">Create
-              Account</button>
->>>>>>> ebfeb9805c5335c59194ddced51e2b557d92acbf
+          </form>
+          <div class="action" @click="loginForm = !loginForm">
+            <p v-if="loginForm">No account? Click here to Register</p>
+            <p v-else>Already have an account? Click here to Login</p>
           </div>
-        </form>
-        <div class="action" @click="loginForm = !loginForm">
-          <p v-if="loginForm">No account? Click here to Register</p>
-          <p v-else>Already have an account? Click here to Login</p>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
