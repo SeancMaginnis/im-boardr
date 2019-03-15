@@ -6,7 +6,7 @@
           <div class="mx-1 p-3 chalk-border" :hidden="this.$route.path == '/'" @click="setBoards" id="chalkFill">
             Home</div>
         </li>
-        <li class="dropdown">
+        <!-- <li class="dropdown">
           <div class="mx-1 p-3 chalk-border dropdown-toggle mx-1" data-toggle="dropdown" href="#" role="button"
             aria-haspopup="true" aria-expanded="false" id="chalkFill">Dropdown</div>
           <div class="dropdown-menu">
@@ -16,7 +16,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Separated link</a>
           </div>
-        </li>
+        </li> -->
         <li>
           <div class="mx-1 p-3 chalk-border mx-1" @click="logout" id="chalkFill">LOGOUT</div>
         </li>

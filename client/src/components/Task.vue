@@ -69,6 +69,11 @@
 
   .del:hover {
     transform: rotate(-10deg);
+    transition: all 0.5s ease;
+  }
+
+  .del:hover {
+    transform: rotate(-10deg);
   }
 
   .hover {

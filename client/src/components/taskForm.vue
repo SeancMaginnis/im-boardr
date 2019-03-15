@@ -3,7 +3,8 @@
     <form @submit.prevent=" createTask">
       <input class="mx-2 rounded p-2 mt-1" v-model="makeTask.title" type="text" placeholder="Title" />
       <input class="mx-2 rounded p-2 mt-1" v-model="makeTask.description" type="text" placeholder="Description" />
-      <button class="chalk-border1 p-2 mx-2 my-2 point" type="submit">Create Task</button>
+      <button class="chalk-border1 p-2 mx-2 my-2 point" type="submit" @click="listClick = !listClick">Create
+        Task</button>
     </form>
   </div>
 </template>

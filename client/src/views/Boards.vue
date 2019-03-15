@@ -11,8 +11,8 @@
       <button class="point chalk-border1 text-white ml-2 p-3" type="submit">Create Board</button>
     </form>
     <div class="row jc">
-      <div class=" col-4 mt-2" v-for="board in boards" :key="board._id" :boardId="board._id">
-        <h1 class="card-horizontal curs2 box text-white" @click="boardDetails(board._id)">{{board.title}}
+      <div class="py-5 col-4 mt-2" v-for="board in boards" :key="board._id" :boardId="board._id">
+        <h1 class="card-horizontal curs2 box text-white py-4" @click="boardDetails(board._id)">{{board.title}}
         </h1>
         <button id="curs" class="point btn-outline-dark" @click="deleteBoard(board._id)">DELETE BOARD</button>
       </div>
@@ -95,18 +95,18 @@
     border-left: 5px solid;
     border-bottom: 15px solid;
     border-image-slice: 3%;
-    <<<<<<< HEAD cursor: pointer;
+    cursor: pointer;
     display: flex;
     justify-content: center;
-    align-items: center=======
+    align-items: center;
   }
 
   #curs {
-    cursor: url('../assets/backgrounds/eraser2.png'), pointer
+    cursor: pointer
   }
 
   .curs2 {
-    cursor: url('../assets/backgrounds/Board.png'), pointer >>>>>>> ebfeb9805c5335c59194ddced51e2b557d92acbf
+    cursor: pointer
   }
 
   .point {
@@ -120,7 +120,7 @@
     border-image-slice: 3%;
   }
 
-  <<<<<<< HEAD .chalk-border1 {
+  .chalk-border1 {
     border-image: url('../assets/backgrounds/border.png');
     background-color: transparent;
     border-top: 4px solid;
@@ -135,7 +135,7 @@
     cursor: url('../assets/backgrounds/eraser2.png'), pointer
   }
 
-  =======>>>>>>>ebfeb9805c5335c59194ddced51e2b557d92acbf .box {
+  .box {
     min-width: 5em;
     min-height: 5em
   }

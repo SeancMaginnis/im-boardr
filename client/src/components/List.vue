@@ -1,12 +1,16 @@
 <template>
   <drop class="col-3 mt-4" @drop="handleDrop" id="cursor">
-    <div class="rounded card-horizontal1 card-vertical justify-content-center">
-      <h3 class="p-2 text-white ">{{list.title}}</h3>
+    <div class="rounded card-horizontal1 card-vertical">
+      <div class="text-white" style="font-size: 30px">{{list.title}}<button
+          class="mb-3 ml-5 mt-4 card-border1 text-white" @click="listClick = !listClick" style="font-size:20px;"><i
+            class="fas fa-plus text-white"></i>
+          Task</button></div>
+
       <img class="ml-2 mb-4" style=" height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
-      <task-form :list="list"></task-form>
+      <task-form v-if="listClick" :list="list"></task-form>
       <task v-for="task in tasks" :task="task" :boardId='list.boardId'></task>
     </div>
-    <button class="btn btn-danger w-25 mt-3" @click="deleteList(list)">Delete</button>
+    <button class="card-border1 text-white w-25 mt-3" @click="deleteList(list)">Delete List</button>
   </drop>
 </template>
 <script>
@@ -16,7 +20,10 @@
     name: 'list',
     props: ['list', 'task'],
     data() {
-      return { over: false };
+      return {
+        over: false,
+        listClick: null
+      };
     },
     mounted() {
       let payload = {
@@ -76,6 +83,16 @@
     border-right: 10px solid;
     border-left: 10px solid;
     border-bottom: 15px solid;
+    border-image-slice: 3%;
+  }
+
+  .card-border1 {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 3px solid;
+    border-right: 3px solid;
+    border-left: 3px solid;
+    border-bottom: 3px solid;
     border-image-slice: 3%;
   }
 </style>

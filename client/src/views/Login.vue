@@ -19,24 +19,19 @@
             <div class="zIndex" style="font-size:1.5em">
               <input class="mx-3" type="email" v-model="creds.email" placeholder="email">
               <input class="mx-3" type="password" v-model="creds.password" placeholder="password">
-              <button type="submit" class="action btn1 zIndex" style="background-color:rgb(67, 110, 160)">Login</button>
+              <button type="submit" class="chalk-border1 text-white">Login</button>
             </div>
           </form>
-          <form v-else @submit.prevent="register">
+          <form v-else @submit.prevent=" register">
             <div class="fix">
-              <input type="text" v-model="newUser.name" placeholder="User Name" required>
-              <input type="email" v-model="newUser.email" placeholder="email" required>
-              <input type="password" v-model="newUser.password" placeholder="Password" required>
-              <button class="btn1" style="background-color:rgb(67, 110, 160)" type="submit">Create Account</button>
+              <input class="mx-2 rounded" type="text" v-model="newUser.name" placeholder="User Name" required>
+              <input class="mx-2 rounded" type="email" v-model="newUser.email" placeholder="email" required>
+              <input class="mx-2 rounded" type="password" v-model="newUser.password" placeholder="Password" required>
+              <button class="chalk-border1 text-white" type="submit">Create Account</button>
             </div>
           </form>
           <div class="action" @click="loginForm = !loginForm">
             <p class="mt-2" v-if=" loginForm">No account? Click here to Register</p>
-            <p v-else>Already have an account? Click here to Login</p>
-          </div>
-          </form>
-          <div class="action" @click="loginForm = !loginForm">
-            <p v-if="loginForm">No account? Click here to Register</p>
             <p v-else>Already have an account? Click here to Login</p>
           </div>
         </div>
@@ -155,5 +150,16 @@
 
   .zIndex {
     z-index: 10;
+  }
+
+  .chalk-border1 {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 4px solid;
+    border-right: 4px solid;
+    border-left: 4px solid;
+    border-bottom: 4px solid;
+    border-image-slice: 3%;
+    cursor: pointer;
   }
 </style>
