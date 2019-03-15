@@ -1,9 +1,11 @@
 <template>
   <div class="container-fluid bg zIndex">
     <div class="overlay"></div>
-    <video loop muted autoplay id="loginVideo">
-      <source src="../assets/backgrounds/loginVideo.mp4" type="video/mp4">
-    </video>
+    <div id="vidContainer">
+      <video loop muted autoplay id="loginVideo">
+        <source src="../assets/backgrounds/loginVideo.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="row">
       <div class="col-12 wel zIndex mt-5">
         <h1>Welcome to Chalkboard!</h1>
@@ -11,9 +13,9 @@
       </div>
     </div>
     <div class="row mt-5">
-      <div class="col-12 mb-5 mt-5 zIndex">
+      <div class="col-12 mt-5 zIndex">
       </div>
-      <div class="col-12 mt-5 log zIndex">
+      <div class="col-12 log zIndex">
         <div class="login">
           <form v-if="loginForm" @submit.prevent="loginUser">
             <div class="zIndex" style="font-size:1.5em">
@@ -126,17 +128,39 @@
     font-size: 1.5em
   }
 
-  #loginVideo {
-    top: 0;
-    left: 0;
+  #vidContainer {
+    /*  making the video fullscreen  */
     position: absolute;
-    background-position: center;
-    min-height: 100vh;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    z-index: 0;
-
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -100;
   }
+
+  #loginVideo {
+    display: flex;
+  }
+
+  /* .container {
+width: 100%;
+height: 100%;
+position: absolute;
+padding:0;
+margin:0;
+left: 0px;
+top: 0px;
+z-index: -1000;
+overflow:hidden;
+}
+
+.videoPlayer {
+    min-height: 100%;
+    //min-width:100%; - if fit to width
+position:absolute;
+bottom:0;
+left:0;
+} */
 
   .overlay {
     position: absolute;
