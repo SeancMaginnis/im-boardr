@@ -2,11 +2,21 @@
   <div class="Tasks">
     <drag :transfer-data="task" class="text-white shadow col-10 offset-1 my-1 point" id="task">
       <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
+<<<<<<< HEAD
       <div @click="taskClick = !taskClick">
         <h4 class="card-title">{{task.title}}: {{task.description}}</h4><span class="chalk-border1 col-3 mb-2"
           @click="deleteTask">Delete</span>
         <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
       </div>
+=======
+      <h4 class="card-title">{{task.title}}: {{task.description}}</h4>
+      <img src="../assets/backgrounds/eraser2.png" class="col-3 del" @click="deleteTask">
+      <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
+      <form>
+        <comment-form :task="task"></comment-form>
+      </form>
+
+>>>>>>> ebfeb9805c5335c59194ddced51e2b557d92acbf
     </drag>
     <comment-form v-if="taskClick" :task="task"></comment-form>
     <comment v-for="comment in comments" :task="task" :comment="comment"></comment>
@@ -51,9 +61,14 @@
 </script>
 
 <style scoped>
-  .btn-delete {
-    background-color: rgb(249, 60, 60);
-    color: white;
+  .del {
+    display: flex;
+    justify-content: flex-start;
+    transition: all 0.5s ease;
+  }
+
+  .del:hover {
+    transform: rotate(-10deg);
   }
 
   .hover {
