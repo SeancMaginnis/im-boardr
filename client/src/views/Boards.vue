@@ -62,7 +62,7 @@
     components: {
       Navbar
     }
-  };
+  }
 </script>
 
 <style>
@@ -74,6 +74,7 @@
     overflow: hidden;
     min-width: 100vw;
     height: auto;
+
   }
 
   .log {
@@ -88,10 +89,15 @@
     border-image: url('../assets/backgrounds/border.png');
     background-color: transparent;
     border-top: 10px solid;
-    border-right: 10px solid;
-    border-left: 10px solid;
+    border-right: 5px solid;
+    border-left: 5px solid;
     border-bottom: 15px solid;
     border-image-slice: 3%;
+    cursor: crosshair
+  }
+
+  .btn {
+    cursor: pointer;
   }
 
   .card-bottom {
