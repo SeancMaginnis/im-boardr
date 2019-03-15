@@ -2,9 +2,21 @@
   <div class="board">
     <div class="container-fluid bg1">
       <navbar></navbar>
-      <div class="row justify-content-center mt-5">
-        <div class="col-4 py-3 text-white card-border1">
-          <h1>{{board.title}}</h1>
+      <div class="row justify-content-center">
+        <div class="col-5  box text-white">
+          <h1>{{board.title}}
+            <hr class="underline">
+          </h1>
+
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="mt-3 text-white">
+          <h2>What's on the Board</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-4 text-white card-horizontal">
           <h3>{{board.description}}</h3>
         </div>
       </div>
@@ -62,5 +74,11 @@
     border-left: 10px solid;
     border-bottom: 15px solid;
     border-image-slice: 3%;
+  }
+
+  .underline {
+    min-width: 15%;
+    background-image: url('../assets/backgrounds/horizontal.png');
+    height: 10px;
   }
 </style>

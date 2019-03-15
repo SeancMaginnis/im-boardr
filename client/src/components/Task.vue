@@ -4,9 +4,9 @@
       @mouseout="showButtons = null" id="task">
       <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
       <h4 class="card-title">{{task.title}}: {{task.description}}</h4>
+      <img src="../assets/backgrounds/eraser2.png" class="col-3 del" @click="deleteTask">
       <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
       <form>
-        <button class="btn btn-delete col-3 mb-2" @click="deleteTask">Delete</button>
         <comment-form :task="task"></comment-form>
       </form>
 
@@ -52,9 +52,14 @@
 </script>
 
 <style scoped>
-  .btn-delete {
-    background-color: rgb(249, 60, 60);
-    color: white;
+  .del {
+    display: flex;
+    justify-content: flex-start;
+    transition: all 0.5s ease;
+  }
+
+  .del:hover {
+    transform: rotate(-10deg);
   }
 
   .hover {

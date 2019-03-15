@@ -1,5 +1,5 @@
 <template>
-  <div class="boards bg1">
+  <div class=" container-fluid boards bg1">
     <navbar></navbar>
     <div class="row log mt-5">
       <h1>Welcome to your <span class="card-bottom">ChalkBoard.</span>
@@ -10,10 +10,12 @@
       <input type="text" placeholder="description" v-model="newBoard.description">
       <button class="btn btn-outline-success" type="submit">Create Board</button>
     </form>
-    <div class="row d-flex justify-content-center my-5" v-for="board in boards" :key="board._id" :boardId="board._id">
-      <h1 class="card-horizontal col-2 text-white" @click="boardDetails(board._id)">{{board.title}}
-      </h1>
-      <button class="btn btn-outline-dark" @click="deleteBoard(board._id)">DELETE BOARD</button>
+    <div class="row">
+      <div class=" col-4 mt-2" v-for="board in boards" :key="board._id" :boardId="board._id">
+        <h1 class="card-horizontal curs2 box text-white" @click="boardDetails(board._id)">{{board.title}}
+        </h1>
+        <button id="curs" class="btn btn-outline-dark" @click="deleteBoard(board._id)">DELETE BOARD</button>
+      </div>
     </div>
   </div>
 </template>
@@ -93,7 +95,14 @@
     border-left: 5px solid;
     border-bottom: 15px solid;
     border-image-slice: 3%;
-    cursor: crosshair
+  }
+
+  #curs {
+    cursor: url('../assets/backgrounds/eraser2.png'), pointer
+  }
+
+  .curs2 {
+    cursor: url('../assets/backgrounds/Board.png'), pointer
   }
 
   .btn {
@@ -105,5 +114,10 @@
     background-color: transparent;
     border-bottom: 15px solid;
     border-image-slice: 3%;
+  }
+
+  .box {
+    min-width: 5em;
+    min-height: 5em
   }
 </style>

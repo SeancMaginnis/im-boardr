@@ -6,35 +6,31 @@
         <hr class="better">
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 mb-5 mt-5">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/rvrZJ5C_Nwg" frameborder="0"
-          allow="accelerometer; autoplay; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="col-12 log">
-        <div class="login">
-          <form v-if="loginForm" @submit.prevent="loginUser">
-            <div style="font-size:1.5em">
-              <input type="email" v-model="creds.email" placeholder="email">
-              <input type="password" v-model="creds.password" placeholder="password">
-              <button type="submit" class="action btn1" style="background-color:rgb(67, 110, 160)">Login</button>
-            </div>
-          </form>
-          <form v-else @submit.prevent="register">
-            <div class="fix">
-              <input type="text" v-model="newUser.name" placeholder="User Name" required>
-              <input type="email" v-model="newUser.email" placeholder="email" required>
-              <input type="password" v-model="newUser.password" placeholder="Password" required>
-              <button class="btn1" style="background-color:rgb(67, 110, 160)" type="submit">Create Account</button>
-            </div>
-          </form>
-          <div class="action" @click="loginForm = !loginForm">
-            <p v-if="loginForm">No account? Click here to Register</p>
-            <p v-else>Already have an account? Click here to Login</p>
+    <div class="col-12 log">
+      <div class="login">
+        <form v-if="loginForm" @submit.prevent="loginUser">
+          <div style="font-size:1.5em">
+            <input type="email" v-model="creds.email" placeholder="email">
+            <input type="password" v-model="creds.password" placeholder="password">
+            <button type="submit" class="action btn1">Login</button>
           </div>
+        </form>
+        <form v-else @submit.prevent="register">
+          <div class="fix">
+            <input type="text" v-model="newUser.name" placeholder="User Name" required>
+            <input type="email" v-model="newUser.email" placeholder="email" required>
+            <input type="password" v-model="newUser.password" placeholder="Password" required>
+            <button class="btn1" type="submit">Create
+              Account</button>
+          </div>
+        </form>
+        <div class="action" @click="loginForm = !loginForm">
+          <p v-if="loginForm">No account? Click here to Register</p>
+          <p v-else>Already have an account? Click here to Login</p>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -94,18 +90,20 @@
 
   .wel {
     color: white;
+    margin-top: 5vh;
+    margin-bottom: 20vh
   }
 
   .btn1 {
 
     display: inline-block;
     padding: 1px, 1.6px;
-    border: 3.5px solid black;
+    border: 3.5px solid rgb(0, 0, 0);
     text-decoration: none;
     font-weight: 300;
-    color: black;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
-    background-color: black;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 1px rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
     text-align: center;
     transition: all 0.15s;
     box-sizing: border-box;
@@ -113,9 +111,9 @@
   }
 
   button.btn1:hover {
-    text-shadow: 0 0 .01px rgba(255, 255, 255, 1);
-    color: white;
-    border-color: white;
+    text-shadow: 0 0 .01px rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
   }
 
   .better {
