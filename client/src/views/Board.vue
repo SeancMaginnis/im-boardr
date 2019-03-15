@@ -2,19 +2,15 @@
   <div class="board">
     <div class="container-fluid bg1">
       <navbar></navbar>
-      <div class="row my-3 justify-content-center">
-        <div class="col-4 offset-1 d-flex text-white">
-          <h3><b>Title:</b> {{board.title}}</h3>
+      <div class="row justify-content-center mt-5">
+        <div class="col-4 py-3 text-white card-border1">
+          <h1>{{board.title}}</h1>
+          <h3>{{board.description}}</h3>
         </div>
       </div>
-      <img style="height: 18px; width: auto;" src="../assets/backgrounds/horizontal.png" />
-      <div class="row my-3 justify-content-center">
-        <div class="col-4 offset-1 d-flex text-white">
-          <h3><b>Description:</b> {{board.description}}</h3>
-          <br>
-        </div>
+      <div class="row justify-content-center">
+        <list-form></list-form>
       </div>
-      <list-form></list-form>
       <div class="row justify-content-around">
         <list v-for="list in lists" :list="list"></list>
       </div>
@@ -52,3 +48,19 @@
     props: ["boardId"]
   };
 </script>
+
+<style>
+  .top-margin {
+    margin-top: 10vh;
+  }
+
+  .card-border1 {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 10px solid;
+    border-right: 10px solid;
+    border-left: 10px solid;
+    border-bottom: 15px solid;
+    border-image-slice: 3%;
+  }
+</style>

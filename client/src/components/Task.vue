@@ -1,15 +1,9 @@
 <template>
   <div class="Tasks">
-    <div class="card d-flex justify-content-center" id="task">
-      <h4 class="card-title">{{task.title}}</h4>
-      <p class="card-body">{{task.description}}</p>
-      <button class="btn btn-delete col-4 offset-4 mb-2" @click="deleteTask">Delete</button>
-    </div>
-    <comment-form :task="task"></comment-form>
     <drag :transfer-data="task" class="text-white shadow col-10 offset-1 my-1" @mouseover="showButtons = 5"
       @mouseout="showButtons = null" id="task">
+      <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
       <h4 class="card-title">{{task.title}}: {{task.description}}</h4>
-
       <img style="height: 10px; width: 100%;" src="../assets/backgrounds/horizontal.png" />
       <form>
         <button class="btn btn-delete col-3 mb-2" @click="deleteTask">Delete</button>
@@ -63,7 +57,7 @@
     color: white;
   }
 
-  <<<<<<< HEAD=======.hover {
+  .hover {
     transition-delay: 1s;
     transition: all 0.5s linear;
   }
@@ -72,6 +66,4 @@
     border-color: #aaa;
     background: #ccc;
   }
-
-  >>>>>>>1e5daad7842bb8a0d5527c1c5b982b48e833d7e8
 </style>

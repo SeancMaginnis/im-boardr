@@ -3,11 +3,11 @@
     <div class="row ml-5">
       <ul class="nav nav-pills">
         <li>
-          <button class="btn btn-outline-light mx-1" :hidden="this.$route.path == '/'" @click="setBoards">Home</button>
+          <div class="mx-1 p-3 text-white chalk-border" :hidden="this.$route.path == '/'" @click="setBoards">Home</div>
         </li>
         <li class="dropdown">
-          <button class="btn btn-outline-light dropdown-toggle mx-1" data-toggle="dropdown" href="#" role="button"
-            aria-haspopup="true" aria-expanded="false">Dropdown</button>
+          <div class="mx-1 p-3 text-white chalk-border dropdown-toggle mx-1" data-toggle="dropdown" href="#"
+            role="button" aria-haspopup="true" aria-expanded="false">Dropdown</div>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
@@ -17,7 +17,7 @@
           </div>
         </li>
         <li>
-          <button class="btn btn-outline-light mx-1" @click="logout">LOGOUT</button>
+          <div class="mx-1 p-3 text-white chalk-border mx-1" @click="logout">LOGOUT</div>
         </li>
       </ul>
     </div>
@@ -40,7 +40,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .log {
     display: flex;
     justify-content: center;
@@ -52,5 +52,16 @@
     position: fixed;
     z-index: 8;
     background-color: rgba(48, 47, 47, 0.822);
+  }
+
+  .chalk-border {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
+    border-top: 4px solid;
+    border-right: 4px solid;
+    border-left: 4px solid;
+    border-bottom: 4px solid;
+    border-image-slice: 3%;
+    cursor: pointer;
   }
 </style>

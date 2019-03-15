@@ -1,19 +1,18 @@
 <template>
   <div class="boards bg1">
     <navbar></navbar>
-    <div class="row log">
-      <h1>WELCOME TO THE BOARDS!!!</h1>
-
+    <div class="row log mt-5">
+      <h1>Welcome to your <span class="card-bottom">ChalkBoard.</span>
+      </h1>
     </div>
-
-    <form @submit.prevent="addBoard">
+    <form class="mt-4" @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required>
       <input type="text" placeholder="description" v-model="newBoard.description">
       <button class="btn btn-outline-success" type="submit">Create Board</button>
     </form>
     <div class="row d-flex justify-content-center my-5" v-for="board in boards" :key="board._id" :boardId="board._id">
-      <div class="card-horizontal col-4 text-white" :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}
-      </div>
+      <h1 class="card-horizontal col-2 text-white" @click="boardDetails(board._id)">{{board.title}}
+      </h1>
       <button class="btn btn-outline-dark" @click="deleteBoard(board._id)">DELETE BOARD</button>
     </div>
   </div>
@@ -55,6 +54,9 @@
       },
       logout() {
         this.$store.dispatch('logout')
+      },
+      boardDetails(id) {
+        this.$router.push('/board/' + id)
       }
     },
     components: {
@@ -88,6 +90,13 @@
     border-top: 10px solid;
     border-right: 10px solid;
     border-left: 10px solid;
+    border-bottom: 15px solid;
+    border-image-slice: 3%;
+  }
+
+  .card-bottom {
+    border-image: url('../assets/backgrounds/border.png');
+    background-color: transparent;
     border-bottom: 15px solid;
     border-image-slice: 3%;
   }
