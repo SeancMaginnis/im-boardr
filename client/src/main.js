@@ -7,6 +7,8 @@ import 'material-design-icons/iconfont/material-icons.css'
 import 'typeface-roboto/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+
+
 Vue.config.productionTip = false
 
 new Vue({

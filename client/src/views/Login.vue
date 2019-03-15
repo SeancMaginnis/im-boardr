@@ -21,10 +21,10 @@
             </div>
           </form>
           <form v-else @submit.prevent="register">
-            <div class="fix" style="font-size:1.25em">
-              <input type="text" v-model="newUser.name" placeholder="name" required>
+            <div class="fix">
+              <input type="text" v-model="newUser.name" placeholder="User Name" required>
               <input type="email" v-model="newUser.email" placeholder="email" required>
-              <input type="password" v-model="newUser.password" placeholder="6 Character Minimum" required>
+              <input type="password" v-model="newUser.password" placeholder="Password" required>
               <button class="btn1" style="background-color:rgb(67, 110, 160)" type="submit">Create Account</button>
             </div>
           </form>
@@ -124,5 +124,8 @@
     width: 35em;
   }
 
-  .fix {}
+  .fix {
+    min-width: 100px;
+    font-size: 1.5em
+  }
 </style>
